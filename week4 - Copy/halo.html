@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto Character Fetcher</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<input type="text" id="characterId" placeholder="Enter Naruto Character ID">
+<button onclick="fetchCharacter()">Search</button>
+
+<div id="characterInfo" style="display: none;">
+    <h2 id="characterNameDisplay"></h2>
+    <img id="characterImage" />
+</div>
+
+<script>
+    async function fetchCharacter() {
+        try {
+            const characterId = $("#characterId").val();
+            const response = await $.ajax({
+                url: `https://narutodb.xyz/api/character/search?name=${characterId}`,
+                method: 'GET',
+                dataType: 'json'
+            });
+
+            if (response.name) {
+                const characterNameDisplay = $("#characterNameDisplay");
+                const characterImage = $("#characterImage");
+
+                characterNameDisplay.text(response.name);
+                characterImage.attr('src', response.images);
+                $("#characterInfo").css('display', 'block');
+            } else {
+                alert("Character not found!");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("An error occurred while fetching data!");
+        }
+    }
+</script>
+
+</body>
+</html>

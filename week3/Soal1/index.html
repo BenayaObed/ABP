@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas 3 no.1</title>
+  <script src="scripts.js"></script>
+</head>
+<body>
+  <h1>Menghitung Min dan Max</h1>
+    <label for="minInput">Min:</label>
+    <input type="number" id="minInput">
+
+    <label for="maxInput">Max:</label>
+    <input type="number" id="maxInput">
+    <button onclick="displayInput()">Hitung</button>
+    <p id="displayArea"></p>
+
+    <script>
+      function displayInput() {
+          var min = parseFloat(document.getElementById("minInput").value);
+          var max = parseFloat(document.getElementById("maxInput").value);
+          document.getElementById("displayArea").innerText = "Jumlah bilangan ganjil di antara "+ min +" and "+ max +" adalah: "+sumOfOddNumbers(min, max);
+      }
+  
+  // MENGGUNAKAN ALLERT
+  // const Min = prompt("Masukan nilai min :"); // menginputkan nilai min
+  // const Max = prompt("Masukan nilai max :"); // menginputkan nilai max
+  // let min = parseInt(Min); // mengubah nilai dari string menjadi integer
+  // let max = parseInt(Max); // mengubah nilai dari string menjadi integer
+  // alert(sumOfOddNumbers(min,max));
+  </script>
+</body>
+</html>
